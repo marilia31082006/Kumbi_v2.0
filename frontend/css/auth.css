@@ -6,24 +6,104 @@
 }
 
 body {
-    background: linear-gradient(135deg, #F5F7FA 0%, #E4E8F0 100%);
     min-height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+    flex-wrap: wrap;
 }
 
+/* Box da Imagem - lado esquerdo (50% da tela) */
+.image-box {
+    width: 50%;
+    height: 100vh;
+    position: relative;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/image/onibusKumbi.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    position: sticky;
+    top: 0;
+}
+
+.image-content {
+    color: white;
+    max-width: 500px;
+    z-index: 2;
+    width: 100%;
+}
+
+.image-content h2 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    line-height: 1.2;
+}
+
+.image-content p {
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    margin-bottom: 30px;
+    line-height: 1.6;
+    opacity: 0.95;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.image-features {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.image-features span {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+    background: rgba(255, 255, 255, 0.1);
+    padding: clamp(10px, 2vh, 15px) clamp(15px, 3vw, 20px);
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.image-features span:hover {
+    transform: translateX(10px);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.image-features i {
+    width: 25px;
+    color: #0F9D58;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+/* Box do Login/Cadastro - lado direito (50% da tela) */
+.auth-box {
+    width: 50%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #F5F7FA 0%, #E4E8F0 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px;
+    overflow-y: auto;
+}
 
 .auth-container {
     background: white;
     border-radius: 20px;
     box-shadow: 0 15px 35px rgba(26, 54, 93, 0.1);
     width: 100%;
-    max-width: 450px;
-    padding: 40px;
+    max-width: 480px;
+    padding: clamp(25px, 5vw, 45px) clamp(20px, 4vw, 40px);
     position: relative;
     overflow: hidden;
+    margin: auto;
 }
 
 .auth-container::before {
@@ -38,31 +118,32 @@ body {
 
 .auth-header {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: clamp(20px, 4vh, 35px);
 }
 
 .logo {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 15px;
+    gap: clamp(10px, 2vw, 15px);
     margin-bottom: 10px;
+    flex-wrap: wrap;
 }
 
 .logo i {
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 5vw, 2.8rem);
     color: #2D5AA0;
 }
 
 .logo h1 {
     color: #1A365D;
-    font-size: 2.2rem;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
     font-weight: 700;
 }
 
 .auth-header p {
     color: #4A5568;
-    font-size: 0.95rem;
+    font-size: clamp(0.85rem, 2vw, 0.95rem);
 }
 
 .auth-tabs {
@@ -70,20 +151,21 @@ body {
     background: #F5F7FA;
     border-radius: 12px;
     padding: 5px;
-    margin-bottom: 25px;
+    margin-bottom: clamp(20px, 4vh, 30px);
 }
 
 .tab-btn {
     flex: 1;
-    padding: 12px;
+    padding: clamp(10px, 2vh, 14px) clamp(8px, 1.5vw, 12px);
     border: none;
     background: transparent;
     color: #4A5568;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 2vw, 1rem);
     cursor: pointer;
     border-radius: 8px;
     transition: all 0.3s ease;
+    white-space: nowrap;
 }
 
 .tab-btn.active {
@@ -102,12 +184,19 @@ body {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: clamp(15px, 3vh, 22px);
 }
 
 .form-group label {
@@ -116,21 +205,22 @@ body {
     gap: 8px;
     color: #1A365D;
     font-weight: 600;
-    margin-bottom: 8px;
-    font-size: 0.95rem;
+    margin-bottom: 6px;
+    font-size: clamp(0.85rem, 2vw, 0.95rem);
 }
 
 .form-group label i {
     color: #2D5AA0;
+    width: 18px;
 }
 
 .form-group input,
 .form-group select {
     width: 100%;
-    padding: 14px 16px;
+    padding: clamp(12px, 2.5vh, 16px) clamp(12px, 2.5vw, 16px);
     border: 2px solid #E2E8F0;
     border-radius: 10px;
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 2vw, 1rem);
     color: #2D3748;
     transition: all 0.3s ease;
     background: white;
@@ -145,16 +235,17 @@ body {
 
 .form-group input::placeholder {
     color: #A0AEC0;
+    font-size: 0.9rem;
 }
 
 .btn-primary {
     width: 100%;
-    padding: 16px;
+    padding: clamp(14px, 3vh, 18px) 16px;
     background: linear-gradient(135deg, #1A365D 0%, #2D5AA0 100%);
     color: white;
     border: none;
     border-radius: 10px;
-    font-size: 1.05rem;
+    font-size: clamp(0.95rem, 2.2vw, 1.1rem);
     font-weight: 600;
     cursor: pointer;
     display: flex;
@@ -171,20 +262,24 @@ body {
     box-shadow: 0 7px 15px rgba(26, 54, 93, 0.2);
 }
 
+.btn-primary:active {
+    transform: translateY(0);
+}
+
 .extra-fields {
     background: #F8FAFC;
-    padding: 20px;
+    padding: clamp(15px, 3vh, 22px);
     border-radius: 10px;
     margin: 15px 0;
     border-left: 4px solid #0F9D58;
 }
 
 .auth-footer {
-    margin-top: 30px;
+    margin-top: clamp(20px, 4vh, 35px);
     text-align: center;
     color: #718096;
-    font-size: 0.85rem;
-    line-height: 1.5;
+    font-size: clamp(0.75rem, 1.8vw, 0.85rem);
+    line-height: 1.6;
 }
 
 .auth-footer a {
@@ -198,23 +293,346 @@ body {
 }
 
 .map-note {
-    margin-top: 10px;
-    padding: 8px 15px;
+    margin-top: 15px;
+    padding: clamp(6px, 1.5vh, 10px) clamp(10px, 2vw, 15px);
     background: #E6FFFA;
     color: #234E52;
     border-radius: 8px;
     display: inline-block;
     font-weight: 500;
     border: 1px solid #B2F5EA;
+    font-size: clamp(0.75rem, 1.8vw, 0.85rem);
 }
 
-/* Responsividade */
-@media (max-width: 500px) {
+/* Tablet Landscape (1024px - 768px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .image-content h2 {
+        font-size: 2.8rem;
+    }
+
+    .image-features span {
+        font-size: 1rem;
+    }
+
     .auth-container {
+        max-width: 420px;
+    }
+}
+
+/* Tablet Portrait e Celulares Grandes */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    .image-box {
+        width: 100%;
+        height: 45vh;
+        min-height: 350px;
+        position: relative;
         padding: 30px 20px;
     }
-    
+
+    .auth-box {
+        width: 100%;
+        min-height: auto;
+        padding: 25px 15px;
+    }
+
+    .image-content {
+        text-align: center;
+        max-width: 600px;
+    }
+
+    .image-content h2 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+    }
+
+    .image-content p {
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+    }
+
+    .image-features {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .image-features span {
+        flex: 1 1 auto;
+        min-width: 200px;
+        font-size: 0.95rem;
+        padding: 12px 15px;
+    }
+
+    .image-features span:hover {
+        transform: translateY(-5px);
+    }
+
+    .auth-container {
+        max-width: 500px;
+        padding: 30px 25px;
+    }
+
+    .logo h1 {
+        font-size: 2.2rem;
+    }
+}
+
+/* Celular Médio (480px - 376px) */
+@media (max-width: 480px) {
+    .image-box {
+        height: auto;
+        min-height: 300px;
+        padding: 25px 15px;
+    }
+
+    .image-content h2 {
+        font-size: 2rem;
+    }
+
+    .image-content p {
+        font-size: 1rem;
+    }
+
+    .image-features {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .image-features span {
+        min-width: 100%;
+        font-size: 0.9rem;
+        padding: 10px 12px;
+    }
+
+    .auth-box {
+        padding: 20px 12px;
+    }
+
+    .auth-container {
+        padding: 25px 18px;
+    }
+
+    .logo {
+        gap: 8px;
+    }
+
+    .logo i {
+        font-size: 2rem;
+    }
+
     .logo h1 {
         font-size: 1.8rem;
     }
+
+    .auth-tabs {
+        margin-bottom: 20px;
+    }
+
+    .tab-btn {
+        font-size: 0.9rem;
+        padding: 10px 5px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group input,
+    .form-group select {
+        padding: 12px;
+        font-size: 0.95rem;
+    }
+
+    .btn-primary {
+        padding: 14px;
+        font-size: 1rem;
+    }
+
+    .extra-fields {
+        padding: 15px;
+        margin: 10px 0;
+    }
+}
+
+/* Celular Pequeno (375px e abaixo) */
+@media (max-width: 375px) {
+    .image-box {
+        min-height: 280px;
+        padding: 20px 12px;
+    }
+
+    .image-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .image-content p {
+        font-size: 0.95rem;
+        margin-bottom: 15px;
+    }
+
+    .image-features span {
+        font-size: 0.85rem;
+        padding: 8px 10px;
+    }
+
+    .auth-container {
+        padding: 20px 15px;
+    }
+
+    .logo h1 {
+        font-size: 1.6rem;
+    }
+
+    .auth-header p {
+        font-size: 0.8rem;
+    }
+
+    .tab-btn {
+        font-size: 0.8rem;
+        padding: 8px 4px;
+    }
+
+    .form-group label {
+        font-size: 0.8rem;
+    }
+
+    .form-group input,
+    .form-group select {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+
+    .btn-primary {
+        padding: 12px;
+        font-size: 0.95rem;
+    }
+
+    .auth-footer {
+        font-size: 0.7rem;
+    }
+
+    .map-note {
+        font-size: 0.7rem;
+        padding: 5px 10px;
+    }
+}
+
+/* Telas Muito Grandes (acima de 1920px) */
+@media (min-width: 1920px) {
+    .image-content {
+        max-width: 700px;
+    }
+
+    .image-content h2 {
+        font-size: 4rem;
+    }
+
+    .image-content p {
+        font-size: 1.5rem;
+    }
+
+    .image-features span {
+        font-size: 1.2rem;
+        padding: 18px 25px;
+    }
+
+    .auth-container {
+        max-width: 550px;
+        padding: 50px;
+    }
+}
+
+/* Suporte para orientação paisagem em celulares */
+@media (max-height: 500px) and (orientation: landscape) {
+    .image-box {
+        height: 100vh;
+    }
+
+    .auth-box {
+        min-height: 100vh;
+    }
+
+    .image-content h2 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+
+    .image-content p {
+        font-size: 1rem;
+        margin-bottom: 15px;
+    }
+
+    .image-features {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .image-features span {
+        flex: 1 1 auto;
+        min-width: 180px;
+        padding: 8px 12px;
+    }
+
+    .auth-container {
+        padding: 20px;
+        max-height: 95vh;
+        overflow-y: auto;
+    }
+
+    .auth-header {
+        margin-bottom: 15px;
+    }
+
+    .form-group {
+        margin-bottom: 12px;
+    }
+}
+
+/* Melhorias de toque para dispositivos móveis */
+@media (hover: none) and (pointer: coarse) {
+
+    .tab-btn,
+    .btn-primary,
+    .image-features span,
+    .auth-footer a {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .tab-btn:active,
+    .btn-primary:active {
+        opacity: 0.8;
+    }
+
+    .image-features span:active {
+        background: rgba(255, 255, 255, 0.25);
+    }
+
+    input,
+    select,
+    button {
+        font-size: 16px !important;
+        /* Previne zoom automático no iOS */
+    }
+}
+
+/* Suporte para telas de alta resolução */
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+    .image-box {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/image/onibusKumbi.jpg');
+    }
+}
+
+/* Animação suave para mudanças de tamanho */
+.image-box,
+.auth-box,
+.auth-container,
+.image-features span {
+    transition: all 0.3s ease-in-out;
 }
