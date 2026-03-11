@@ -11,7 +11,7 @@ body {
     flex-wrap: wrap;
 }
 
-/* Box da Imagem - lado esquerdo (50% da tela) */
+
 .image-box {
     width: 50%;
     height: 100vh;
