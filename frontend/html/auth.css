@@ -16,7 +16,7 @@ body {
     width: 50%;
     height: 100vh;
     position: relative;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/frontend/html/image/onibusKumbi.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('onibusKumbi.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
